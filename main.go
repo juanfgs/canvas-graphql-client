@@ -21,7 +21,7 @@ func main() {
 	} else {
 		for _, canvas := range query.Canvases {
 			fmt.Println(fmt.Sprintf("Displaying canvas : %s", canvas.Name))
-			canvas.Render()
+			fmt.Println(canvas.GetContents())
 
 		}
 

@@ -10,10 +10,9 @@ type Rectangle struct {
 }
 
 func (r Rectangle) GetPoint(x int, y int) string {
-	if r.isOutline(x, y) {
+	if r.isOutline(x, y) && r.Outline != "" {
 		return r.Outline
-	}
-	if r.isInBounds(x, y) {
+	} else if r.isInBounds(x, y) && r.Fill != "" {
 		return r.Fill
 	}
 	return " "
@@ -35,10 +34,10 @@ func (r Rectangle) isOutline(x int, y int) bool {
 	if y == r.Y && x >= r.X && x < r.X+r.Width {
 		return true
 	}
-	if x == r.X+r.Width && y >= r.Y && y < r.Y+r.Height {
+	if x == r.X+r.Width-1 && y > r.Y && y < r.Y+r.Height {
 		return true
 	}
-	if y == r.Y+r.Height && x >= r.X && x <= r.X+r.Width {
+	if y == r.Y+r.Height-1 && x >= r.X && x < r.X+r.Width {
 		return true
 	}
 

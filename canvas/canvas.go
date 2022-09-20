@@ -3,11 +3,12 @@ package canvas
 import (
 	"fmt"
 	"github.com/juanfgs/canvas-client/shapes"
+	"strings"
 )
 
 const (
-	sizeX = 15
-	sizeY = 10
+	sizeX = 24
+	sizeY = 11
 )
 
 type Canvas struct {
@@ -16,9 +17,10 @@ type Canvas struct {
 	Contents []shapes.Rectangle
 }
 
-func (c Canvas) Render() {
+func (c Canvas) GetContents() string {
+	var sb strings.Builder // string builder should be a bit more efficient than concat
 	for y := 0; y < sizeY; y++ {
-		fmt.Println("")
+		sb.WriteString("\n")
 		for x := 0; x < sizeX; x++ {
 			var point string = " "
 			for _, r := range c.Contents {
@@ -26,10 +28,10 @@ func (c Canvas) Render() {
 					point = r.GetPoint(x, y)
 				}
 			}
-			fmt.Print(point)
+			sb.WriteString(point)
 		}
 	}
-
-	fmt.Println()
-	fmt.Println()
+	fmt.Println(sb.String())
+	sb.WriteString("\n")
+	return sb.String()
 }
