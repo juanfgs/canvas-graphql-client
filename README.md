@@ -8,7 +8,7 @@ This tutorial assumes you have git , go environment and docker with docker-compo
 First clone the repository as follows:
 
 ```
-$ git clone https://github.com/juanfgs/canvas-graphql-server.git
+$ git clone https://github.com/juanfgs/canvas-graphql-client.git
 ```
 
 
